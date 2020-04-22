@@ -1,5 +1,5 @@
 import React, { CSSProperties, FC } from "react";
-import { extractInitials } from "../../Utilities/initals";
+import { extractInitials } from "../../Utilities/initials";
 import "./styles.scss";
 import cx from "classnames";
 
