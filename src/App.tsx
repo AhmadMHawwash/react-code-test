@@ -1,17 +1,13 @@
-import React, { FC, useState, useEffect } from "react";
+import { useMachine } from '@xstate/react';
+import React, { FC } from "react";
 import "./App.scss";
 import Circle from "./Atoms/Circle";
-import { LOADING_TIME } from "./Constants/time";
+import loadingMachine from "./Machines/Loading";
 
 const App: FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading] = useMachine(loadingMachine);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), LOADING_TIME);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return <div className="App">{isLoading && <Circle />}</div>;
+  return <div className="App">{isLoading.matches("active") && <Circle />}</div>;
 };
 
 export default App;
