@@ -1,5 +1,5 @@
 import React, { FC, CSSProperties } from "react";
-import "./Styles.scss";
+import "./styles.scss";
 
 interface CircleProps {
   style?: CSSProperties;
