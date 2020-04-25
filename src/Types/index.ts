@@ -18,5 +18,5 @@ export interface APIData {
   total: number;
   total_pages: number;
   data: User[];
-  ad: Ad;
+  ad?: Ad;
 }

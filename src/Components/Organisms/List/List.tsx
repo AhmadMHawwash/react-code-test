@@ -3,8 +3,10 @@ import React, { CSSProperties } from "react";
 interface ListProps<T extends any> {
   items: T[] | undefined;
   itemRenderer: (item: T, index: number, itemss: T[]) => JSX.Element;
-  footerRenderer?: () => React.ReactNode;
-  headerRenderer?: () => React.ReactNode;
+  footerElementRenderer?: () => JSX.Element;
+  headerElementRenderer?: () => JSX.Element;
+  footerRenderer?: () => JSX.Element;
+  headerRenderer?: () => JSX.Element;
   containerStyles?: CSSProperties;
   listStyle?: CSSProperties;
   onBottom?: () => void;
@@ -15,8 +17,10 @@ export function List<T>(props: ListProps<T>) {
   const {
     items,
     itemRenderer,
-    footerRenderer,
-    headerRenderer,
+    footerElementRenderer = () => null,
+    headerElementRenderer = () => null,
+    footerRenderer = () => null,
+    headerRenderer = () => null,
     containerStyles,
     listStyle,
     onBottom = () => undefined,
@@ -31,22 +35,24 @@ export function List<T>(props: ListProps<T>) {
 
     const { scrollHeight, scrollTop, clientHeight } = e.target;
     const diff = scrollHeight - scrollTop;
-  
+
     const threshold = (diff - clientHeight) / clientHeight;
     const isBottom = diff === clientHeight;
 
-    if(threshold < bottomThreshold || isBottom) onBottom();
+    if (threshold < bottomThreshold || isBottom) onBottom();
   };
 
   return (
     <div style={containerStyles}>
-      <div>{headerRenderer}</div>
+      {headerRenderer()}
       {items && (
         <div onScroll={handleScroll} style={listStyle}>
+          {headerElementRenderer()}
           {items.map(itemRenderer)}
+          {footerElementRenderer()}
         </div>
       )}
-      <div>{footerRenderer}</div>
+      {footerRenderer()}
     </div>
   );
 }

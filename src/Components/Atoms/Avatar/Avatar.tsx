@@ -1,9 +1,9 @@
 import React, { CSSProperties, FC } from "react";
-import { extractInitials } from "../../Utilities/initials";
+import { extractInitials } from "../../../Utilities/initials";
 import "./styles.scss";
 import cx from "classnames";
 import { useMachine } from "@xstate/react";
-import getMachine from "../../Machines/Loading";
+import getMachine from "../../../Machines/Loading";
 
 interface AvatarProps {
   name: string;
