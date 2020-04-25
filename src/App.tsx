@@ -17,9 +17,7 @@ const App: FC = () => {
           <Circle />
         ) : (
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <div style={{ display: "flex", flex: 2 }} />
             <Users />
-            <div style={{ display: "flex", flex: 2 }} />
           </div>
         )}
       </Provider>

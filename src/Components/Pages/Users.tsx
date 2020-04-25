@@ -2,7 +2,11 @@ import { useDebounceFn } from "@umijs/hooks";
 import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../Ducks/users/api";
-import { selectIsLastPage, selectPage, selectUsers } from "../../Ducks/users/selectors";
+import {
+  selectIsLastPage,
+  selectPage,
+  selectUsers,
+} from "../../Ducks/users/selectors";
 import { User } from "../../Types";
 import Avatar from "../Atoms/Avatar";
 import ListItem from "../Molecules/ListItem";
@@ -17,15 +21,19 @@ const itemRenderer = (user: User) => {
       style={{
         display: "flex",
         alignItems: "center",
-        margin: 10,
+        padding: 17,
+        paddingLeft: 0,
+        marginLeft: 20,
+        borderBottom: "rgb(242 242 242) 1px solid",
       }}
-      titleRenderer={() => fullname}
+      titleRenderer={() => <span style={{ fontWeight: 600 }}>{fullname}</span>}
       avatarRenderer={() => (
         <Avatar
           src={avatarSrc}
-          style={{ marginRight: 5 }}
+          style={{ marginRight: 25 }}
           name={fullname}
           background="red"
+          size="70px"
         />
       )}
     />
@@ -33,10 +41,27 @@ const itemRenderer = (user: User) => {
 };
 
 const footerElementRenderer = (isLastPage: boolean) => {
-  return <div>{isLastPage ? "Loading..." : "No more to show"}</div>;
+  return (
+    <div style={{ padding: 30 }}>
+      {isLastPage ? "Loading..." : "No more to show"}
+    </div>
+  );
 };
 const headerRenderer = () => {
-  return <div>Users</div>;
+  return (
+    <div
+      style={{
+        height: 75,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "rgb(241 241 241)",
+        fontWeight: 600,
+      }}
+    >
+      Users
+    </div>
+  );
 };
 
 interface Users {}
@@ -51,7 +76,10 @@ export const Users: FC<Users> = () => {
   const isLastPage = useSelector(selectIsLastPage);
   const page = useSelector(selectPage);
   const users = useSelector(selectUsers);
-  const { run: debouncedFetchUsers } = useDebounceFn(() => dispatch(fetchUsers(page)), 200);
+  const { run: debouncedFetchUsers } = useDebounceFn(
+    () => dispatch(fetchUsers(page)),
+    200
+  );
 
   return (
     <>
@@ -73,7 +101,7 @@ export const Users: FC<Users> = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "flexStart",
-          height: 200,
+          height: 500,
           overflow: "auto",
         }}
       />
