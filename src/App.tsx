@@ -47,18 +47,22 @@ const App: FC = () => {
       ) : (
         data && (
           <List<User>
+            onBottom={() => console.log("asd")}
+            bottomThreshold={0.2}
             itemRenderer={itemRenderer}
             items={data.data}
             containerStyles={{
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
+              height: "100%"
             }}
             listStyle={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
               alignItems: "flexStart",
+              height: 200,
+              overflow: "auto"
             }}
           />
         )
