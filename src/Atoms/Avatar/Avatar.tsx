@@ -2,6 +2,8 @@ import React, { CSSProperties, FC } from "react";
 import { extractInitials } from "../../Utilities/initials";
 import "./styles.scss";
 import cx from "classnames";
+import { useMachine } from "@xstate/react";
+import getMachine from "../../Machines/Loading";
 
 interface AvatarProps {
   name: string;
@@ -40,6 +42,8 @@ export const Avatar: FC<AvatarProps> = ({
   className,
   background,
 }) => {
+  const machineKey = `toggle_image_${src}`;
+  const [current, send] = useMachine(getMachine(machineKey));
   const initials = extractInitials(name);
 
   return (
@@ -47,8 +51,9 @@ export const Avatar: FC<AvatarProps> = ({
       <div
         style={makeStyles({ background, size, borderRadius })}
         className="UserAvatar--inner"
+        onClick={() => send("TOGGLE")}
       >
-        {src ? (
+        {current.matches("active") ? (
           <img
             style={makeStyles({ size, borderRadius })}
             className="UserAvatar--img"

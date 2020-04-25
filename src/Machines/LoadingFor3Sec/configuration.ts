@@ -7,7 +7,7 @@ interface LoadingSchema {
     active: {};
   };
 }
-type LoadingEvent = { type: "TOGGLE" };
+type LoadingEvent = NullEvent;
 
 export const configuration: MachineConfig<
   LoadingContext,
@@ -17,14 +17,10 @@ export const configuration: MachineConfig<
   id: "loading",
   initial: "active",
   states: {
-    inactive: {
-      on: {
-        TOGGLE: "active",
-      },
-    },
+    inactive: {},
     active: {
-      on: {
-        TOGGLE: "inactive",
+      after: {
+        100: "inactive",
       },
     },
   },
