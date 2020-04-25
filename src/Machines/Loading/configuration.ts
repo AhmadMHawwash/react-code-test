@@ -20,7 +20,7 @@ export const configuration: MachineConfig<
     inactive: {},
     active: {
       after: {
-        3000: "inactive",
+        100: "inactive",
       },
     },
   },
