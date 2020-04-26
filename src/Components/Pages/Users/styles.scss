@@ -1,3 +1,4 @@
+
 .UsersPage--container {
   display: flex;
   flex-direction: column;
@@ -20,6 +21,16 @@
   padding: 17px;
   padding-left: 0px;
   margin-left: 20px;
-  border-bottom: "rgb(242 242 242)" 1px solid;
+  border-bottom: rgb(242, 242, 242) 1px solid;
   flex-direction: row;
+  width: calc(100% - 34px)
+}
+
+.UsersPage--Header {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(241, 241, 241);
+  font-weight: 600;
 }
