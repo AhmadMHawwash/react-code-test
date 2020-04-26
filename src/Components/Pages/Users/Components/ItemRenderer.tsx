@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { User } from "../../../../Types";
 import ListItem from "../../../Molecules/ListItem";
 import Avatar from "../../../Atoms/Avatar";
-
+import "../styles.scss"
 interface ItemRendererProps {
   user: User;
 }
@@ -13,14 +13,7 @@ export const ItemRenderer: FC<ItemRendererProps> = ({ user }) => {
   return (
     <ListItem
       key={id}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        padding: 17,
-        paddingLeft: 0,
-        marginLeft: 20,
-        borderBottom: "rgb(242 242 242) 1px solid",
-      }}
+      className="UsersPage--list-item"
       titleRenderer={() => <span style={{ fontWeight: 600 }}>{fullname}</span>}
       avatarRenderer={() => (
         <Avatar

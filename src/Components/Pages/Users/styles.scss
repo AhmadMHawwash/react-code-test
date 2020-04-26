@@ -1,0 +1,25 @@
+.UsersPage--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  flex: 1;
+}
+
+.UsersPage--list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 500px;
+  overflow: auto;
+}
+
+.UsersPage--list-item {
+  display: flex;
+  align-items: center;
+  padding: 17px;
+  padding-left: 0px;
+  margin-left: 20px;
+  border-bottom: "rgb(242 242 242)" 1px solid;
+  flex-direction: row;
+}

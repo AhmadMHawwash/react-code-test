@@ -9,6 +9,8 @@ interface ListProps<T extends any> {
   headerRenderer?: () => React.ReactNode;
   containerStyles?: CSSProperties;
   listStyle?: CSSProperties;
+  containerClass?: string;
+  listClass?: string;
   onBottom?: () => void;
   bottomThreshold?: number;
 }
@@ -25,6 +27,8 @@ export function List<T>(props: ListProps<T>) {
     listStyle,
     onBottom = () => undefined,
     bottomThreshold = 0,
+    containerClass,
+    listClass
   } = props;
 
   const handleScroll = (e: any) => {
@@ -43,10 +47,10 @@ export function List<T>(props: ListProps<T>) {
   };
 
   return (
-    <div style={containerStyles}>
+    <div className={containerClass} style={containerStyles}>
       {headerRenderer()}
       {items && (
-        <div onScroll={handleScroll} style={listStyle}>
+        <div onScroll={handleScroll} className={listClass} style={listStyle}>
           {headerElementRenderer()}
           {items.map(itemRenderer)}
           {footerElementRenderer()}
