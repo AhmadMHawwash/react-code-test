@@ -1,5 +1,4 @@
-import React, { FC, CSSProperties } from "react";
-import cx from "classnames";
+import React, { CSSProperties, FC } from "react";
 
 interface ListItemProps {
   titleRenderer: () => React.ReactNode;

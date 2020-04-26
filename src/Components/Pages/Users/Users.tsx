@@ -26,7 +26,7 @@ export const Users: FC<UsersPageProps> = () => {
   const isLastPage = useSelector(selectIsLastPage);
   const page = useSelector(selectPage);
   const users = useSelector(selectUsers);
-  
+
   const { run: debouncedFetchUsers } = useDebounceFn(
     () => dispatch(fetchUsers(page)),
     200

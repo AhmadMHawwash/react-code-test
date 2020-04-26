@@ -1,10 +1,10 @@
-import React, { FunctionComponentElement, FunctionComponent } from "react";
+import React, { FC } from "react";
 
 interface FooterElementRendererProps {
   isLastPage: boolean;
 }
 
-export const FooterElementRenderer: FunctionComponent<FooterElementRendererProps> = ({
+export const FooterElementRenderer: FC<FooterElementRendererProps> = ({
   isLastPage,
 }) => {
   return (

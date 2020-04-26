@@ -1,4 +1,4 @@
-import { MachineConfig, NullEvent } from "xstate";
+import { MachineConfig } from "xstate";
 
 interface LoadingContext {}
 interface LoadingSchema {
