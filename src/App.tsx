@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Provider } from "react-redux";
 import "./App.scss";
 import store from "./Store/configuration";
-import { Users } from "./Components/Pages/Users";
+import { Users } from "./Components/Pages/Users/Users";
 import { useMachine } from "@xstate/react";
 import getMachine from "./Machines/LoadingFor3Sec";
 import Circle from "./Components/Atoms/Circle";

@@ -2,11 +2,11 @@ import React, { CSSProperties } from "react";
 
 interface ListProps<T extends any> {
   items: T[] | undefined;
-  itemRenderer: (item: T, index: number, itemss: T[]) => JSX.Element;
-  footerElementRenderer?: () => JSX.Element;
-  headerElementRenderer?: () => JSX.Element;
-  footerRenderer?: () => JSX.Element;
-  headerRenderer?: () => JSX.Element;
+  itemRenderer: (item: T, index: number, items: T[]) => React.ReactNode;
+  footerElementRenderer?: () => React.ReactNode;
+  headerElementRenderer?: () => React.ReactNode;
+  footerRenderer?: () => React.ReactNode;
+  headerRenderer?: () => React.ReactNode;
   containerStyles?: CSSProperties;
   listStyle?: CSSProperties;
   onBottom?: () => void;
