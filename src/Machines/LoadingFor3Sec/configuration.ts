@@ -1,4 +1,5 @@
 import { MachineConfig, NullEvent } from "xstate";
+import { LOADING_TIME } from "../../Constants/time";
 
 interface LoadingContext {}
 interface LoadingSchema {
@@ -20,7 +21,7 @@ export const configuration: MachineConfig<
     inactive: {},
     active: {
       after: {
-        3000: "inactive",
+        [LOADING_TIME]: "inactive",
       },
     },
   },
