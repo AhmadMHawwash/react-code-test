@@ -8,7 +8,7 @@ export const FooterElementRenderer: FC<FooterElementRendererProps> = ({
   isLastPage,
 }) => {
   return (
-    <div style={{ padding: 30 }}>
+    <div style={{ padding: 30, width: "100%" }}>
       {isLastPage ? "Loading..." : "No more to show"}
     </div>
   );
